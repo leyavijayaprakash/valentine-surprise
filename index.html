@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>For My Love 💗</title>
+<title>For you, my love 💌</title>
 <style>
+/* General page styling */
 body {
     background-color: #fce4ec;
     font-family: 'Courier New', monospace;
@@ -29,6 +30,7 @@ button:hover {
     background-color: #ff8fab;
 }
 
+/* Folder styling */
 .folder-container {
     display: none;
     margin-top: 80px;
@@ -48,6 +50,47 @@ button:hover {
 .folder:hover {
     transform: scale(1.1);
 }
+
+/* Polaroid section styling */
+.polaroid-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.polaroid {
+    background: white;
+    padding: 15px 15px 40px 15px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: transform 0.3s;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.polaroid img {
+    width: 150px;
+    opacity: 0; /* hidden at first */
+    transition: opacity 0.8s ease; /* smooth fade */
+    border-radius: 5px;
+}
+
+.polaroid.show img {
+    opacity: 1; /* fade in */
+}
+
+.polaroid:hover {
+    transform: rotate(-3deg) scale(1.05);
+}
+
+/* Certificate styling */
+#certificateSection img {
+    width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
 </style>
 </head>
 
@@ -57,17 +100,58 @@ button:hover {
 <button onclick="showFolders()">Open</button>
 
 <div class="folder-container" id="folders">
-    <div class="folder" onclick="alert('Insert your letter here 💗')">💌 For You</div>
-    <div class="folder" onclick="alert('Insert playlist link here 🎵')">🎵 My Love <3</div>
-    <div class="folder" onclick="alert('Insert pictures here 📸')">📸 Memories</div>
-    <div class="folder" onclick="alert('Secret surprise goes here 👀')">🌹 Open Me</div>
+    <div class="folder" onclick="alert('HAII LOVEE💗 Ok so, idk how to say this without embarassing myself here but what do i have to lose at this point?? I love you so so so much omg. You make me miss your presence, even when you are gone for a second. You have healed lots of insecurities that i have had for YEARS, and you dont even try. You just like exist and somehow im at peace for some reason. AND THE WAY YOU TAKE CARE OF ME?? SIR?? Ik how much you love me in the moments where you know what I want even if I havent said anything, you somehow read my mind or something...ALSO DONT GET ME STARTED ON YOUR VOICE, ESP MORNING VOICE GOOD LORD HAVE MERCY AHHH, AND UR BICEPS? GRAH ANYWAYS, that aside I just wanna say, you make feel safe, and i dont say that lightly. With you, i dont feel like i have to be more or less of myself, just me unfiltered, and the fact that you like me like that is crazy. That being said, we are at the end of this section pls proceed to the next lol. Once again, I love you so muchhh hehee')">💌 For You</div>
+
+    <div class="folder" onclick="window.open('https://open.spotify.com/playlist/2htUoBGa6D2cxnOHkISC9Y?si=2382a13f5038463e')">🎵 My Love <3</div>
+
+    <div class="folder" onclick="showPolaroids()">📸 Memories</div>
+
+    <div class="folder" onclick="showCertificate()">🏆 Best Boyfriend</div>
 </div>
 
+<!-- Polaroid Section -->
+<div id="polaroidSection" style="display:none; margin-top:50px;">
+    <h2>Our Memories 📸</h2>
+    <div class="polaroid-container">
+        <div class="polaroid" onclick="revealPhoto('photo1')">
+            <img id="photo1" src="photo1.jpg">
+        </div>
+        <div class="polaroid" onclick="revealPhoto('photo2')">
+            <img id="photo2" src="photo2.jpg">
+        </div>
+        <div class="polaroid" onclick="revealPhoto('photo3')">
+            <img id="photo3" src="photo3.jpg">
+        </div>
+    </div>
+</div>
+
+<!-- Certificate Section -->
+<div id="certificateSection" style="display:none; margin-top:50px;">
+    <h2>Official Certificate 🏆</h2>
+    <img src="certificate.jpg">
+</div>
+
+<!-- Scripts -->
 <script>
 function showFolders() {
     document.getElementById("welcome").style.display = "none";
     document.querySelector("button").style.display = "none";
     document.getElementById("folders").style.display = "block";
+}
+
+function showPolaroids() {
+    document.getElementById("polaroidSection").style.display = "block";
+    document.getElementById("certificateSection").style.display = "none";
+}
+
+function showCertificate() {
+    document.getElementById("certificateSection").style.display = "block";
+    document.getElementById("polaroidSection").style.display = "none";
+}
+
+function revealPhoto(id) {
+    const polaroidDiv = document.getElementById(id).parentElement;
+    polaroidDiv.classList.add("show"); // add the class to fade in image
 }
 </script>
 
