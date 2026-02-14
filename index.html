@@ -183,14 +183,14 @@ Once again, I love you so muchhh hehee 🤍
 <div id="polaroidSection" style="display:none; margin-top:50px;">
     <h2>Our Memories 📸</h2>
     <div class="polaroid-container">
-        <div class="polaroid" onclick="revealPhoto('photo1')">
-            <img id="photo1" src="photo1.jpg">
+        <div class="polaroid">
+            <img id="photo1" src="photo1.jpg" style="display:block;">
         </div>
-        <div class="polaroid" onclick="revealPhoto('photo2')">
-            <img id="photo2" src="photo2.jpg">
+        <div class="polaroid">
+            <img id="photo2" src="photo2.jpg" style="display:block;">
         </div>
-        <div class="polaroid" onclick="revealPhoto('photo3')">
-            <img id="photo3" src="photo3.jpg">
+        <div class="polaroid">
+            <img id="photo3" src="photo3.jpg" style="display:block;">
         </div>
     </div>
 </div>
@@ -224,13 +224,16 @@ function openLetter() {
 
 /* Polaroids */
 function showPolaroids() {
+    // Show polaroid section
     document.getElementById("polaroidSection").style.display = "block";
+
+    // Hide other sections
     document.getElementById("certificateSection").style.display = "none";
     document.getElementById("envelopeSection").style.display = "none";
-}
 
-function revealPhoto(id) {
-    document.getElementById(id).style.display = "block";
+    // Make all images inside polaroids visible immediately
+    const images = document.querySelectorAll(".polaroid img");
+    images.forEach(img => img.style.display = "block");
 }
 
 /* Certificate */
