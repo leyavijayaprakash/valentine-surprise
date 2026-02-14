@@ -2,35 +2,54 @@
 <html>
 <head>
 <title>For you, my love 💌</title>
+
 <style>
-/* General page styling */
+
+/* 🌸 Soft Pastel Background */
 body {
-    background-color: #fce4ec;
+    background: linear-gradient(to bottom, #fde2e4, #fad2e1, #e2ece9);
     font-family: 'Courier New', monospace;
     text-align: center;
     margin: 0;
+    overflow-x: hidden;
+}
+
+/* Floating hearts */
+.heart {
+    position: fixed;
+    bottom: -10px;
+    font-size: 20px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 0.7; }
+    100% { transform: translateY(-100vh); opacity: 0; }
 }
 
 h1 {
     margin-top: 100px;
-    color: #b76e79;
+    color: #b5838d;
+    font-size: 28px;
 }
 
 button {
     padding: 15px 30px;
     font-size: 18px;
-    background-color: #ffb6c1;
+    background-color: #ffcad4;
     border: none;
-    border-radius: 15px;
+    border-radius: 25px;
     cursor: pointer;
     transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 button:hover {
-    background-color: #ff8fab;
+    background-color: #f4acb7;
+    transform: scale(1.05);
 }
 
-/* Folder styling */
 .folder-container {
     display: none;
     margin-top: 80px;
@@ -42,7 +61,7 @@ button:hover {
     padding: 30px;
     background-color: white;
     border-radius: 20px;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
     cursor: pointer;
     transition: 0.3s;
 }
@@ -51,46 +70,66 @@ button:hover {
     transform: scale(1.1);
 }
 
-/* Polaroid section styling */
-.polaroid-container {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 30px;
-    flex-wrap: wrap;
+/* 💌 Envelope Styling */
+
+.envelope {
+    position: relative;
+    width: 260px;
+    height: 170px;
+    background: #fcd5ce;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: 0.3s;
 }
 
-.polaroid {
-    background: white;
-    padding: 15px 15px 40px 15px;
-    box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
-    cursor: pointer;
-    transition: transform 0.3s;
-    border-radius: 10px;
-    text-align: center;
+.envelope:hover {
+    transform: scale(1.05);
+}
+
+.flap {
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-left: 130px solid transparent;
+    border-right: 130px solid transparent;
+    border-bottom: 85px solid #f8b6c1;
+    transition: 0.6s;
+    transform-origin: top;
+}
+
+.letter {
+    position: absolute;
+    bottom: -120%;
+    left: 10px;
+    width: 240px;
+    height: 160px;
+    background: #fffaf0;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    font-family: "Brush Script MT", cursive;
+    font-size: 18px;
+    transition: 0.8s ease;
+    border-radius: 5px;
+}
+
+/* 📸 Polaroids */
+
+.polaroid-container {
+    margin-top: 30px;
 }
 
 .polaroid img {
     width: 150px;
-    opacity: 0; /* hidden at first */
-    transition: opacity 0.8s ease; /* smooth fade */
-    border-radius: 5px;
+    border-radius: 10px;
+    display: none;
+    margin: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.polaroid.show img {
-    opacity: 1; /* fade in */
-}
-
-.polaroid:hover {
-    transform: rotate(-3deg) scale(1.05);
-}
-
-/* Certificate styling */
-#certificateSection img {
-    width: 300px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
 </style>
 </head>
 
@@ -100,16 +139,35 @@ button:hover {
 <button onclick="showFolders()">Open</button>
 
 <div class="folder-container" id="folders">
-    <div class="folder" onclick="alert('HAII LOVEE💗 Ok so, idk how to say this without embarassing myself here but what do i have to lose at this point?? I love you so so so much omg. You make me miss your presence, even when you are gone for a second. You have healed lots of insecurities that i have had for YEARS, and you dont even try. You just like exist and somehow im at peace for some reason. AND THE WAY YOU TAKE CARE OF ME?? SIR?? Ik how much you love me in the moments where you know what I want even if I havent said anything, you somehow read my mind or something...ALSO DONT GET ME STARTED ON YOUR VOICE, ESP MORNING VOICE GOOD LORD HAVE MERCY AHHH, AND UR BICEPS? GRAH ANYWAYS, that aside I just wanna say, you make feel safe, and i dont say that lightly. With you, i dont feel like i have to be more or less of myself, just me unfiltered, and the fact that you like me like that is crazy. That being said, we are at the end of this section pls proceed to the next lol. Once again, I love you so muchhh hehee')">💌 For You</div>
 
-    <div class="folder" onclick="window.open('https://open.spotify.com/playlist/2htUoBGa6D2cxnOHkISC9Y?si=2382a13f5038463e')">🎵 My Love <3</div>
+    <div class="folder" onclick="showEnvelope()">💌 For You</div>
+
+    <div class="folder" onclick="window.open('https://open.spotify.com/playlist/2htUoBGa6D2cxnOHkISC9Y?si=2382a13f5038463e')">🎵 My Love</div>
 
     <div class="folder" onclick="showPolaroids()">📸 Memories</div>
 
     <div class="folder" onclick="showCertificate()">🏆 Best Boyfriend</div>
+
 </div>
 
-<!-- Polaroid Section -->
+<!-- 💌 Envelope Section -->
+<div id="envelopeSection" style="display:none; margin-top:60px;">
+    <div class="envelope" onclick="openLetter()">
+        <div class="flap"></div>
+        <div class="letter" id="letter">
+HAII LOVEE💗<br><br>
+Ok so, idk how to say this without embarrassing myself here but what do I have to lose at this point?? I love you so so so much omg.<br><br>
+You make me miss your presence, even when you are gone for a second...<br><br>
+AND THE WAY YOU TAKE CARE OF ME?? SIR??<br><br>
+Morning voice?? GOOD LORD HAVE MERCY.<br><br>
+You make me feel safe, and I don’t say that lightly.<br><br>
+With you, I don’t feel like I have to be more or less of myself — just me, unfiltered.<br><br>
+Once again, I love you so muchhh hehee 🤍
+        </div>
+    </div>
+</div>
+
+<!-- 📸 Polaroid Section -->
 <div id="polaroidSection" style="display:none; margin-top:50px;">
     <h2>Our Memories 📸</h2>
     <div class="polaroid-container">
@@ -125,34 +183,66 @@ button:hover {
     </div>
 </div>
 
-<!-- Certificate Section -->
+<!-- 🏆 Certificate Section -->
 <div id="certificateSection" style="display:none; margin-top:50px;">
     <h2>Official Certificate 🏆</h2>
-    <img src="certificate.jpg">
+    <img src="certificate.jpg" style="width:300px; border-radius:15px;">
 </div>
 
-<!-- Scripts -->
 <script>
+
+/* Show folders */
 function showFolders() {
     document.getElementById("welcome").style.display = "none";
     document.querySelector("button").style.display = "none";
     document.getElementById("folders").style.display = "block";
 }
 
-function showPolaroids() {
-    document.getElementById("polaroidSection").style.display = "block";
+/* Envelope */
+function showEnvelope() {
+    document.getElementById("envelopeSection").style.display = "block";
+    document.getElementById("polaroidSection").style.display = "none";
     document.getElementById("certificateSection").style.display = "none";
 }
 
-function showCertificate() {
-    document.getElementById("certificateSection").style.display = "block";
-    document.getElementById("polaroidSection").style.display = "none";
+function openLetter() {
+    document.querySelector(".flap").style.transform = "rotateX(180deg)";
+    document.getElementById("letter").style.bottom = "10px";
+}
+
+/* Polaroids */
+function showPolaroids() {
+    document.getElementById("polaroidSection").style.display = "block";
+    document.getElementById("certificateSection").style.display = "none";
+    document.getElementById("envelopeSection").style.display = "none";
 }
 
 function revealPhoto(id) {
-    const polaroidDiv = document.getElementById(id).parentElement;
-    polaroidDiv.classList.add("show"); // add the class to fade in image
+    document.getElementById(id).style.display = "block";
 }
+
+/* Certificate */
+function showCertificate() {
+    document.getElementById("certificateSection").style.display = "block";
+    document.getElementById("polaroidSection").style.display = "none";
+    document.getElementById("envelopeSection").style.display = "none";
+}
+
+/* Floating hearts generator */
+setInterval(function(){
+    var heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(function(){
+        heart.remove();
+    }, 6000);
+
+}, 800);
+
 </script>
 
 </body>
