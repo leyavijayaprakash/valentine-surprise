@@ -121,17 +121,26 @@ button:hover {
 }
 
 /* 📸 Polaroids */
-
 .polaroid-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
     margin-top: 30px;
+    flex-wrap: wrap;
 }
 
 .polaroid img {
     width: 150px;
     border-radius: 10px;
-    display: none;
+    display: none; /* click to reveal */
     margin: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Optional: h2 for sections */
+h2 {
+    color: #b5838d;
+    margin-bottom: 20px;
 }
 
 </style>
@@ -159,13 +168,13 @@ button:hover {
     <div class="envelope" onclick="openLetter()">
         <div class="flap"></div>
         <div class="letter" id="letter">
-            HAII LOVEE💗<br><br>
-            Ok so, idk how to say this without embarrassing myself here but what do I have to lose at this point?? I love you so so so much omg.<br><br>
-            You make me miss your presence, even when you are gone for a second. You have healed lots of insecurities that I have had for YEARS, and you don't even try. You just like exist and somehow I'm at peace for some reason.<br><br>
-            AND THE WAY YOU TAKE CARE OF ME?? SIR?? Ik how much you love me in the moments where you know what I want even if I haven't said anything, you somehow read my mind or something...<br><br>
-            ALSO DONT GET ME STARTED ON YOUR VOICE, ESP MORNING VOICE GOOD LORD HAVE MERCY AHHH, AND UR BICEPS? GRAH ANYWAYS, that aside I just wanna say, you make feel safe, and I don’t say that lightly. With you, I don’t feel like I have to be more or less of myself, just me unfiltered, and the fact that you like me like that is crazy.<br><br>
-            That being said, we are at the end of this section pls proceed to the next lol.<br><br>
-            Once again, I love you so muchhh hehee 🤍
+HAII LOVEE💗<br><br>
+Ok so, idk how to say this without embarrassing myself here but what do I have to lose at this point?? I love you so so so much omg.<br><br>
+You make me miss your presence, even when you are gone for a second. You have healed lots of insecurities that I have had for YEARS, and you don't even try. You just like exist and somehow I'm at peace for some reason.<br><br>
+AND THE WAY YOU TAKE CARE OF ME?? SIR?? Ik how much you love me in the moments where you know what I want even if I haven't said anything, you somehow read my mind or something...<br><br>
+ALSO DONT GET ME STARTED ON YOUR VOICE, ESP MORNING VOICE GOOD LORD HAVE MERCY AHHH, AND UR BICEPS? GRAH ANYWAYS, that aside I just wanna say, you make feel safe, and I don’t say that lightly. With you, I don’t feel like I have to be more or less of myself, just me unfiltered, and the fact that you like me like that is crazy.<br><br>
+That being said, we are at the end of this section pls proceed to the next lol.<br><br>
+Once again, I love you so muchhh hehee 🤍
         </div>
     </div>
 </div>
@@ -250,3 +259,4 @@ setInterval(function(){
 
 </body>
 </html>
+
